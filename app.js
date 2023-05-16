@@ -1,7 +1,7 @@
 // Importar modulo http y exprexx
 import http from "http";
 import express from "express";
-
+const
 // Crear una instancia de express
 const app = express(); // (req, res) => {UN MONTON DE CODIGO}
 
@@ -26,6 +26,8 @@ app.use((req, res, next)=>{
     <p>This is my awesome app</p>
     `);
 });
+
+
 // Creando el servidor
 const server = http.createServer(app);
 
