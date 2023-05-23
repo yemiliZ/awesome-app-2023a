@@ -26,8 +26,22 @@ app.use((req, res, next)=>{
     <p>This is my awesome app</p>
     `);
 });
+app.use('/add-product',(req,res)=>{
+    if(req.method "POST")return
+    console.log("Sirviendo el formulario")
+    res.send(`
+    <form action="/add-product" method="POST">
+    <input type="text" name="title">
+    <button type="submit">Add Product</button>
+    </form>
+    `);
+});
+app.use('/addproduct',(req,res)=>{
+    for(const prop in req){
+        console.log(`PROP:${prop}`);
+    }
 
-
+})
 // Creando el servidor
 const server = http.createServer(app);
 
