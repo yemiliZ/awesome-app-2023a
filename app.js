@@ -1,57 +1,28 @@
-// Importar modulo http y exprexx
-import http from "http";
-import express from "express";
-const
-// Crear una instancia de express
-const app = express(); // (req, res) => {UN MONTON DE CODIGO}
+// Importando Express
+import express from 'express';
 
-// Registrar nuestro primer middleware
-app.use((req, res, next)=> {
-    console.log("Ejecutando el Middleware 1");
-    next();
-});
+// Importando el enrutador
+import adminRouter from './routes/admin.route.js';
+import shopRouter from './routes/shop.route.js';
 
-app.use((req, res, next)=>{
-    console.log("Ejecutando el Misddleware 2");
-    next()
-});
-app.use((req, res, next)=>{
-    console.log(`${req.method} - ${req.url}`);
-    next();
-});
-app.use((req, res, next)=>{
-    console.log("Respondiendo al cliente");
-    res.send(`
-    <h1>Welcome to express</h1>
-    <p>This is my awesome app</p>
-    `);
-});
-app.use('/add-product',(req,res)=>{
-    if(req.method "POST")return
-    console.log("Sirviendo el formulario")
-    res.send(`
-    <form action="/add-product" method="POST">
-    <input type="text" name="title">
-    <button type="submit">Add Product</button>
-    </form>
-    `);
-});
-app.use('/addproduct',(req,res)=>{
-    for(const prop in req){
-        console.log(`PROP:${prop}`);
-    }
+// Creando la instancia de express
+// que basicamente es un middleware
+const app = express();
 
-})
-// Creando el servidor
-const server = http.createServer(app);
+// Se registra el middleware del body-parser
+app.use(express.urlencoded({ extended: true }));
 
-// Definir puertos
+// Se agrega ruta de administrador
+app.use(adminRouter);
+// Se agrega ruta shop
+app.use(shopRouter);
+
+
+// Definiendo puertos
 const port = 3000;
-const ip = "0.0.0.0";
+const ip = "0.0.0.0"
 
-// Arrancar el servidor
-server.listen(port, ip, (err) => {
-
-    console.log("Funcionando en http://localhost:3000");
-
+// Arrancando el servidor
+app.listen(port, ip, () => {
+  console.log(` Sirviendo en http://localhost:${port}`);
 });
