@@ -1,9 +1,13 @@
 // Importando Express
 import express from 'express';
+import path from 'path';
 
 // Importando el enrutador
 import adminRouter from './routes/admin.route.js';
 import shopRouter from './routes/shop.route.js';
+
+
+
 
 // Creando la instancia de express
 // que basicamente es un middleware
@@ -16,6 +20,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(adminRouter);
 // Se agrega ruta shop
 app.use(shopRouter);
+
+app.use(( req,res )=>{
+
+  res.sendFile(path.resolve('views', 'notf_404.html'));
+
+});
 
 
 // Definiendo puertos
