@@ -8,6 +8,7 @@ import { engine } from 'express-handlebars';
 // Importando el enrutador
 import adminRouter from './routes/admin.route.js';
 import shopRouter from './routes/shop.route.js';
+import notf from './routes/NFound.route.js';
 
 // Importando el directorio raiz
 import { ROOT_DIR } from './helpers/paths.js'
@@ -50,10 +51,8 @@ app.use(shopRouter);
 
 // Registrando el middleware para el error
 // 404
-app.use((req, res, next) => {
-  res.status(httpStatus.NOT_FOUND)
-  .sendFile(path.resolve('views','notf_404.html'))
-});
+app.use(notf);
+
 
 // Definiendo puertos
 const port = 3000;
@@ -61,5 +60,5 @@ const ip = "0.0.0.0"
 
 // Arrancando el servidor
 app.listen(port, ip, () => {
-  console.log(`🤖 Sirviendo en http://localhost:${port}`);
+  console.log(` Sirviendo en http://localhost:${port}`);
 });

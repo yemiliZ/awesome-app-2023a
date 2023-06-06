@@ -87,8 +87,8 @@ main {
 
 .btn {
   font: inherit;
-  border: 1px solid #00695c;
-  color: #00695c;
+  border: 1px solid #690023;
+  color: #690035;
   background: white;
   border-radius: 3px;
   cursor: pointer;
@@ -96,6 +96,6 @@ main {
 
 .btn:hover,
 .btn:active {
-  background-color: #00695c;
+  background-color: #690046;
   color: white;
 }
